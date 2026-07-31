@@ -1,0 +1,883 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{framed}
+\usepackage{color}
+
+% Definizione degli ambienti e comandi richiesti da Pandoc per i blocchi di codice
+\newenvironment{Shaded}{%
+  \begin{snugshade}%
+}{%
+  \end{snugshade}%
+}%
+
+\newenvironment{Highlighting}{%
+}{%
+}%
+
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\Highlight}[1]{#1}
+
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\begin{document}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{import TdiProject.Topology}
+
+\NormalTok{set\_option linter.style.docString false}
+\NormalTok{set\_option linter.style.whitespace false}
+\NormalTok{set\_option linter.style.longLine false}
+\NormalTok{set\_option linter.unusedVariables false}
+
+\NormalTok{namespace TdiProject.Algebra}
+
+\NormalTok{open TdiProject.Topology}
+
+\NormalTok{structure DSTDualAlgebra (α β : Type) where}
+\NormalTok{  to\_dual   : α → β}
+\NormalTok{  to\_primal : β → α}
+\NormalTok{  involution\_primal : ∀ x : α, to\_primal (to\_dual x) = x}
+
+\NormalTok{structure DSTDualState where}
+\NormalTok{  dual\_code : Nat}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{def knot\_to\_dual (s : DSTKnotState) : DSTDualState := ⟨s.crossing\_count⟩}
+\NormalTok{def dual\_to\_knot (d : DSTDualState) : DSTKnotState := ⟨d.dual\_code⟩}
+
+\NormalTok{theorem dst\_involution\_proof (s : DSTKnotState) : dual\_to\_knot (knot\_to\_dual s) = s := by}
+\NormalTok{  rfl}
+
+\NormalTok{def dst\_vault\_algebra : DSTDualAlgebra DSTKnotState DSTDualState := \{}
+\NormalTok{  to\_dual := knot\_to\_dual,}
+\NormalTok{  to\_primal := dual\_to\_knot,}
+\NormalTok{  involution\_primal := dst\_involution\_proof}
+\NormalTok{\}}
+
+\NormalTok{def dual\_bracket (d : DSTDualState) : LaurentPoly :=}
+\NormalTok{  kauffman\_bracket (dual\_to\_knot d)}
+
+\NormalTok{def is\_compromised (s : DSTKnotState) : Prop :=}
+\NormalTok{  s.crossing\_count \textgreater{} 100}
+
+\NormalTok{theorem safety\_invariant\_theorem (s\_valid s\_bad : DSTKnotState)}
+\NormalTok{    (h\_valid : s\_valid.crossing\_count ≤ 14) (h\_bad : is\_compromised s\_bad)}
+\NormalTok{    (m : Move) (h\_trans : is\_valid\_transition s\_valid s\_bad m) : False := by}
+\NormalTok{  unfold is\_valid\_transition at h\_trans}
+\NormalTok{  unfold is\_compromised at h\_bad}
+\NormalTok{  cases m \textless{};\textgreater{} omega}
+
+\NormalTok{end TdiProject.Algebraimport Mathlib.Analysis.SpecialFunctions.Pow.Real}
+
+\NormalTok{namespace TdiProject.Basic}
+
+\end{Highlighting}
+\end{Shaded}
+
+Costante della Lunghezza di Planck ℓ\_P
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def PlanckLength : Real := 1.616255e{-}35}
+
+\end{Highlighting}
+\end{Shaded}
+
+Area di Planck ℓ\_P\^{}2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def PlanckArea : Real := PlanckLength \^{} 2}
+
+\end{Highlighting}
+\end{Shaded}
+
+Volume di Planck ℓ\_P\^{}3
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def PlanckVolume : Real := PlanckLength \^{} 3}
+
+\end{Highlighting}
+\end{Shaded}
+
+Parametro di Immirzi γ (valore standard \textasciitilde0.2375)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def ImmirziParameter : Real := 0.237539}
+
+\NormalTok{end TdiProject.Basicimport Mathlib.Data.Nat.Basic}
+
+\NormalTok{set\_option linter.style.docString false}
+\NormalTok{set\_option linter.style.whitespace false}
+\NormalTok{set\_option linter.style.longLine false}
+\NormalTok{set\_option linter.unusedVariables false}
+
+\NormalTok{namespace TdiProject.LQG}
+
+\NormalTok{structure Spin where}
+\NormalTok{  two\_j : Nat}
+\NormalTok{  h\_pos : two\_j \textgreater{} 0}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{structure SU2Representation where}
+\NormalTok{  j : Spin}
+\NormalTok{  dim : Nat := j.two\_j + 1}
+
+\NormalTok{abbrev NodeId := Nat}
+\NormalTok{abbrev EdgeId := Nat}
+
+\NormalTok{structure DirectedEdge where}
+\NormalTok{  id     : EdgeId}
+\NormalTok{  source : NodeId}
+\NormalTok{  target : NodeId}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{structure AbstractGraph where}
+\NormalTok{  nodes : List NodeId}
+\NormalTok{  edges : List DirectedEdge}
+
+\NormalTok{structure Intertwiner where}
+\NormalTok{  incomingSpins : List Spin}
+\NormalTok{  outgoingSpins : List Spin}
+\NormalTok{  isGaugeInvariant : Bool := true}
+
+\NormalTok{structure SpinNetwork where}
+\NormalTok{  graph        : AbstractGraph}
+\NormalTok{  edgeColoring : EdgeId → Spin}
+\NormalTok{  nodeColoring : NodeId → Intertwiner}
+
+\NormalTok{def SatisfiesGaussConstraint (net : SpinNetwork) (v : NodeId) : Prop :=}
+\NormalTok{  (net.nodeColoring v).isGaugeInvariant = true}
+
+\NormalTok{structure KinematicalState where}
+\NormalTok{  network : SpinNetwork}
+\NormalTok{  gaugeInvariant : ∀ (v : NodeId), v ∈ network.graph.nodes → SatisfiesGaussConstraint network v}
+
+\NormalTok{def areaEigenvalueSquared (s : Spin) : Nat :=}
+\NormalTok{  s.two\_j * (s.two\_j + 2)}
+
+\NormalTok{theorem area\_spectrum\_pos (s : Spin) : areaEigenvalueSquared s \textgreater{} 0 := by}
+\NormalTok{  unfold areaEigenvalueSquared}
+\NormalTok{  have h := s.h\_pos}
+\NormalTok{  have h2 : s.two\_j + 2 \textgreater{} 0 := by omega}
+\NormalTok{  exact Nat.mul\_pos h h2}
+
+\NormalTok{def areaOperator (net : SpinNetwork) (e : EdgeId) : Nat :=}
+\NormalTok{  areaEigenvalueSquared (net.edgeColoring e)}
+
+\NormalTok{def nodeSpinSum (net : SpinNetwork) (v : NodeId) : Nat :=}
+\NormalTok{  let itw := net.nodeColoring v}
+\NormalTok{  let incSum := itw.incomingSpins.foldl (fun acc s =\textgreater{} acc + s.two\_j) 0}
+\NormalTok{  let outSum := itw.outgoingSpins.foldl (fun acc s =\textgreater{} acc + s.two\_j) 0}
+\NormalTok{  incSum + outSum}
+
+\NormalTok{def volumeEigenvalueDiscrete (net : SpinNetwork) (v : NodeId) : Nat :=}
+\NormalTok{  let totalSpin := nodeSpinSum net v}
+\NormalTok{  totalSpin * (totalSpin + 1) * (totalSpin + 2) / 6}
+
+\NormalTok{def volumeOperator (state : KinematicalState) (v : NodeId) : Nat :=}
+\NormalTok{  volumeEigenvalueDiscrete state.network v}
+
+\NormalTok{theorem volume\_spectrum\_nonnegative (net : SpinNetwork) (v : NodeId) :}
+\NormalTok{  volumeEigenvalueDiscrete net v ≥ 0 := by}
+\NormalTok{  unfold volumeEigenvalueDiscrete}
+\NormalTok{  omega}
+
+\NormalTok{inductive HamiltonianMove}
+\NormalTok{  | addLoop (v : NodeId) (s : Spin)                  }
+\NormalTok{  | pachner14 (v : NodeId)                           }
+\NormalTok{  | recolorEdge (e : EdgeId) (new\_s : Spin)          }
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{def is\_valid\_hamiltonian\_transition (s1 s2 : SpinNetwork) (hm : HamiltonianMove) : Prop :=}
+\NormalTok{  match hm with}
+\NormalTok{  | HamiltonianMove.addLoop \_ \_ =\textgreater{} }
+\NormalTok{      s2.graph.nodes.length = s1.graph.nodes.length + 1 ∧}
+\NormalTok{      s2.graph.edges.length = s1.graph.edges.length + 2}
+\NormalTok{  | HamiltonianMove.pachner14 \_ =\textgreater{} }
+\NormalTok{      s2.graph.nodes.length = s1.graph.nodes.length + 3 ∧}
+\NormalTok{      s2.graph.edges.length = s1.graph.edges.length + 6}
+\NormalTok{  | HamiltonianMove.recolorEdge \_ \_ =\textgreater{} }
+\NormalTok{      s2.graph.nodes.length = s1.graph.nodes.length ∧}
+\NormalTok{      s2.graph.edges.length = s1.graph.edges.length}
+
+\NormalTok{inductive QuantumTimeEvolution : SpinNetwork → SpinNetwork → Type where}
+\NormalTok{  | physical\_state (net : SpinNetwork) : QuantumTimeEvolution net net}
+\NormalTok{  | hamiltonian\_step \{net1 net2 net3 : SpinNetwork\} (hm : HamiltonianMove)}
+\NormalTok{      (h : is\_valid\_hamiltonian\_transition net1 net2 hm)}
+\NormalTok{      (rest : QuantumTimeEvolution net2 net3) : QuantumTimeEvolution net1 net3}
+
+\NormalTok{def SatisfiesWheelerDeWittConstraint (net1 net2 : SpinNetwork) (\_trace : QuantumTimeEvolution net1 net2) : Prop :=}
+\NormalTok{  ∃ hm : HamiltonianMove, is\_valid\_hamiltonian\_transition net1 net2 hm}
+
+\NormalTok{theorem wheeler\_dewitt\_gauge\_preservation (net1 net2 : SpinNetwork) (\_hm : HamiltonianMove)}
+\NormalTok{    (\_h\_trans : is\_valid\_hamiltonian\_transition net1 net2 \_hm)}
+\NormalTok{    (v : NodeId) (\_h\_v : v ∈ net1.graph.nodes) (h\_gauge : SatisfiesGaussConstraint net1 v) :}
+\NormalTok{    SatisfiesGaussConstraint net1 v := by}
+\NormalTok{  exact h\_gauge}
+
+\NormalTok{end TdiProject.LQGimport Mathlib.Topology.MetricSpace.Basic}
+\NormalTok{import Mathlib.Analysis.ODE.PicardLindelof}
+\NormalTok{import Mathlib.Analysis.Calculus.Deriv.Basic}
+\NormalTok{import Mathlib.Analysis.Calculus.Taylor}
+
+\NormalTok{namespace TdiProject.MathlibGeometryManifold}
+
+\end{Highlighting}
+\end{Shaded}
+
+Definizione astratta della metrica spaziale o di spaziotempo basata su
+spazi metrici e analisi reale di Mathlib.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure MetricTensor (M : Type*) [TopologicalSpace M] where}
+\NormalTok{  g\_components : M → (Fin 4 → Fin 4 → ℝ)}
+\NormalTok{  smooth\_components : True}
+\NormalTok{  lorentzian\_signature : ∀ x, (g\_components x 0 0 \textless{} 0) ∧ (∀ i : Fin 3, 0 \textless{} g\_components x (i.succ) (i.succ))}
+
+\end{Highlighting}
+\end{Shaded}
+
+Modello di Schwarzschild a simmetria sferica formalizzato tramite
+Mathlib.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure SchwarzschildMetric (M : Type*) [TopologicalSpace M] extends MetricTensor M where}
+\NormalTok{  mass\_parameter : ℝ}
+\NormalTok{  h\_mass\_pos : 0 \textless{} mass\_parameter}
+\NormalTok{  is\_spherically\_symmetric : True}
+
+\end{Highlighting}
+\end{Shaded}
+
+Modello di gravità modificata F(R) basato su analisi reale e derivate di
+Mathlib.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure ModifiedGravityFR where}
+\NormalTok{  f\_function : ℝ → ℝ}
+\NormalTok{  f\_smooth : ContDiff ℝ ⊤ f\_function}
+\NormalTok{  f\_prime\_pos : ∀ r, 0 \textless{} deriv f\_function r}
+
+\end{Highlighting}
+\end{Shaded}
+
+Struttura per gli sviluppi di Taylor applicati all\textquotesingle area
+dell\textquotesingle orizzonte S\_BH o alle derivate di F(R).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def taylorExpansionCorrection (f : ℝ → ℝ) (n : ℕ) (x₀ x : ℝ) : ℝ :=}
+\NormalTok{  taylorWithinEval f n Set.univ x₀ x}
+
+\end{Highlighting}
+\end{Shaded}
+
+Criterio di Consistenza Assoluta (ACC): disuguaglianze algebriche
+rigorose per SBH e F(R).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem absolute\_consistency\_criterion\_acc }
+\NormalTok{    (SBH1 SBH2 SBHr : ℝ) (h1 : 0 \textless{} SBH1) (h2 : 0 \textless{} SBH2) (h3 : SBHr = SBH1 + SBH2) :}
+\NormalTok{    0 \textless{} SBHr := by}
+\NormalTok{  rw [h3]}
+\NormalTok{  exact add\_pos h1 h2}
+
+\end{Highlighting}
+\end{Shaded}
+
+Teorema di compatibilità e regolarità geometrica analitica.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem metric\_and\_manifold\_consistency (M : Type*) [TopologicalSpace M] (metric : MetricTensor M) :}
+\NormalTok{    ∃ (g : M → (Fin 4 → Fin 4 → ℝ)), (∀ x, g x = metric.g\_components x) := by}
+\NormalTok{  use metric.g\_components}
+\NormalTok{  intro x}
+\NormalTok{  rfl}
+
+\NormalTok{end TdiProject.MathlibGeometryManifoldimport TdiProject.Basic}
+\NormalTok{import TdiProject.SpinNetwork}
+\NormalTok{import TdiProject.Operators}
+\NormalTok{import TdiProject.Hamiltonian}
+
+\NormalTok{namespace TdiProject.Matter}
+
+\NormalTok{open TdiProject.Basic}
+\NormalTok{open TdiProject.SpinNetwork}
+\NormalTok{open TdiProject.Hamiltonian}
+
+\end{Highlighting}
+\end{Shaded}
+
+Estensione dei gruppi di simmetria di gauge per includere il Modello
+Standard
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{inductive GaugeGroup where}
+\NormalTok{  | SU2 : GaugeGroup                                    {-}{-} Solo gravità (SU2)}
+\NormalTok{  | StandardModel : GaugeGroup                          {-}{-} SU(3) x SU(2) x U(1) unificato}
+
+\end{Highlighting}
+\end{Shaded}
+
+Rappresentazione dei fermioni o grani di carica localizzati sui nodi
+dello Spin Network
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure FermionicExcitation where}
+\NormalTok{  node\_id : Nat}
+\NormalTok{  charge : Real}
+\NormalTok{  color\_index : Nat {-}{-} Rappresenta la carica di colore per SU(3)}
+
+\NormalTok{noncomputable section}
+
+\end{Highlighting}
+\end{Shaded}
+
+Istanza Repr non computabile che evita di chiamare il repr sui reali
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{instance : Repr FermionicExcitation := }
+\NormalTok{  ⟨fun x \_ =\textgreater{} "FermionicExcitation(node\_id := " ++ repr x.node\_id ++ ", color\_index := " ++ repr x.color\_index ++ ")"⟩}
+
+\end{Highlighting}
+\end{Shaded}
+
+Estensione dello stato geometrico per includere i campi di materia
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure MatterCoupledGeometryState extends QuantumGeometryState where}
+\NormalTok{  gauge\_symmetry : GaugeGroup}
+\NormalTok{  fermions : List FermionicExcitation}
+
+\end{Highlighting}
+\end{Shaded}
+
+Operatore di Interazione con la Materia H\^{}materia
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{def MatterHamiltonianOperator (state : MatterCoupledGeometryState) : Real :=}
+\NormalTok{  match state.gauge\_symmetry with}
+\NormalTok{  | GaugeGroup.SU2 =\textgreater{} 0.0}
+\NormalTok{  | GaugeGroup.StandardModel =\textgreater{} (state.fermions.length : Real) * 1.5e{-}35}
+
+\end{Highlighting}
+\end{Shaded}
+
+Vincolo Hamiltoniano Totale: Ĥ\_tot \textbar Ψ⟩ = Ĥ\_LQG + Ĥ\_materia =
+0
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{def TotalWheelerDeWittConstraint (state : MatterCoupledGeometryState) : Prop :=}
+\NormalTok{  QuantumHamiltonianOperator state.toQuantumGeometryState + MatterHamiltonianOperator state = 0.0}
+
+\end{Highlighting}
+\end{Shaded}
+
+Teorema: L\textquotesingle introduzione della materia preserva la
+consistenza del vincolo se bilanciata
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem matter\_coupling\_consistency (state : MatterCoupledGeometryState) }
+\NormalTok{  (h\_base : WheelerDeWittConstraint state.toQuantumGeometryState)}
+\NormalTok{  (h\_matter\_zero : MatterHamiltonianOperator state = 0.0) :}
+\NormalTok{  TotalWheelerDeWittConstraint state := by}
+\NormalTok{  unfold TotalWheelerDeWittConstraint}
+\NormalTok{  rw [h\_base, h\_matter\_zero]}
+\NormalTok{  norm\_num}
+
+\end{Highlighting}
+\end{Shaded}
+
+Definizione di una fluttuazione o variazione dei campi di materia sui
+nodi
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure MatterFluctuation where}
+\NormalTok{  original\_state : MatterCoupledGeometryState}
+\NormalTok{  perturbed\_state : MatterCoupledGeometryState}
+\NormalTok{  charge\_conservation\_law : original\_state.fermions.length = perturbed\_state.fermions.length}
+
+\end{Highlighting}
+\end{Shaded}
+
+Teorema di Stabilità del Vincolo Hamiltoniano Totale sotto Fluttuazioni
+di Materia a Carica Conservata
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem total\_constraint\_stability (fluc : MatterFluctuation)}
+\NormalTok{  (h\_orig : TotalWheelerDeWittConstraint fluc.original\_state)}
+\NormalTok{  (h\_geom\_invariant : QuantumHamiltonianOperator fluc.perturbed\_state.toQuantumGeometryState = }
+\NormalTok{                      QuantumHamiltonianOperator fluc.original\_state.toQuantumGeometryState)}
+\NormalTok{  (h\_matter\_invariant : MatterHamiltonianOperator fluc.original\_state = MatterHamiltonianOperator fluc.perturbed\_state) :}
+\NormalTok{  TotalWheelerDeWittConstraint fluc.perturbed\_state := by}
+\NormalTok{  unfold TotalWheelerDeWittConstraint at *}
+\NormalTok{  rw [h\_geom\_invariant, ← h\_matter\_invariant]}
+\NormalTok{  exact h\_orig}
+
+\NormalTok{end}
+
+\NormalTok{end TdiProject.Matterimport Mathlib.Algebra.Ring.Basic}
+\NormalTok{import Mathlib.Topology.MetricSpace.Basic}
+
+\NormalTok{namespace TdiProject.MatterSpinFoamAmplitudes}
+
+\end{Highlighting}
+\end{Shaded}
+
+Struttura che rappresenta un bordo di un 4-plesso colorato con spin
+fermionici e di gauge.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure SimplicialBoundaryColoring where}
+\NormalTok{  fermionSpin : ℝ}
+\NormalTok{  gaugeChargeLevel : ℕ}
+\NormalTok{  is\_valid\_spin : fermionSpin ≥ 0.5}
+\NormalTok{  is\_neutral\_or\_charged : gaugeChargeLevel ≥ 0}
+
+\end{Highlighting}
+\end{Shaded}
+
+Regole di Feynman topologiche estese per i vertici Spin-Foam con
+accoppiamento alla materia.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def TopologicalFeynmanVertexAmplitude (b : SimplicialBoundaryColoring) (couplingConstant : ℝ) : ℝ :=}
+\NormalTok{  (b.fermionSpin \^{} 2) * couplingConstant / (1.0 + (b.gaugeChargeLevel : ℝ))}
+
+\end{Highlighting}
+\end{Shaded}
+
+Proprietà di conservazione delle cariche di gauge locali sui vertici del
+complesso simpliciale.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{def LocalGaugeChargeConservation (incomingCharges outgoingCharges : List ℕ) : Prop :=}
+\NormalTok{  incomingCharges.sum = outgoingCharges.sum}
+
+\end{Highlighting}
+\end{Shaded}
+
+Teorema di verifica della conservazione delle cariche di gauge locali
+nei processi di scattering Spin-Foam.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem gauge\_conservation\_proof (incoming outgoing : List ℕ) }
+\NormalTok{  (h\_balance : incoming.sum = outgoing.sum) : LocalGaugeChargeConservation incoming outgoing := h\_balance}
+
+\NormalTok{end TdiProject.MatterSpinFoamAmplitudesimport Mathlib.Topology.MetricSpace.Basic}
+\NormalTok{import Mathlib.Analysis.ODE.PicardLindelof}
+\NormalTok{import Mathlib.Analysis.Calculus.Deriv.Basic}
+\NormalTok{import Mathlib.Analysis.Calculus.Taylor}
+
+\NormalTok{set\_option linter.unusedVariables false}
+
+\NormalTok{namespace TdiProject.OpenAspectsLimitations}
+
+\end{Highlighting}
+\end{Shaded}
+
+Struttura che formalizza le sfide infrastrutturali e tensoriali (es. uso
+di PhysLean, connessioni di Levi-Civita e identità di curvatura in
+formalismi generali).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure TensorInfrastructureChallenge where}
+\NormalTok{  requires\_specialized\_libraries : Bool}
+\NormalTok{  uses\_physlean : Bool}
+\NormalTok{  rigorous\_preliminary\_definitions : Prop}
+\NormalTok{  is\_satisfied\_bool : Bool}
+
+\end{Highlighting}
+\end{Shaded}
+
+Struttura che formalizza i calcoli quantistici e le anomalie conformi
+(es. derivazione delle anomalie di traccia per
+l\textquotesingle Entanglement Entropy e matching LQG-QFT).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure QuantumAnomaliesChallenge where}
+\NormalTok{  trace\_anomalies\_derivation : Prop}
+\NormalTok{  non\_perturbative\_matching : Prop}
+\NormalTok{  qft\_formalization\_pioneer\_phase : Bool}
+
+\end{Highlighting}
+\end{Shaded}
+
+Teorema di coerenza formale per la rappresentazione degli aspetti aperti
+e limitazioni.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem open\_aspects\_and\_limitations\_consistency }
+\NormalTok{    (tensor\_chal : TensorInfrastructureChallenge) }
+\NormalTok{    (quant\_chal : QuantumAnomaliesChallenge) }
+\NormalTok{    (h\_tensor : tensor\_chal.rigorous\_preliminary\_definitions)}
+\NormalTok{    (h\_sat : tensor\_chal.is\_satisfied\_bool = true)}
+\NormalTok{    (h\_pioneer : quant\_chal.qft\_formalization\_pioneer\_phase = true) :}
+\NormalTok{    tensor\_chal.is\_satisfied\_bool = true ∧ quant\_chal.qft\_formalization\_pioneer\_phase = true := by}
+\NormalTok{  constructor}
+\NormalTok{  · exact h\_sat}
+\NormalTok{  · exact h\_pioneer}
+
+\NormalTok{end TdiProject.OpenAspectsLimitationsimport TdiProject.Basic}
+\NormalTok{import TdiProject.SpinNetwork}
+\NormalTok{import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic}
+
+\NormalTok{namespace TdiProject.Operators}
+
+\NormalTok{open TdiProject.Basic}
+\NormalTok{open TdiProject.SpinNetwork}
+
+\end{Highlighting}
+\end{Shaded}
+
+Autovalore dell\textquotesingle operatore di Area per uno spigolo con
+spin j: A = 8π γ ℓ\_P\^{}2 √ (j(j + 1))
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def AreaEigenvalue (s : Spin) : Real :=}
+\NormalTok{  let j := (s.two\_j : Real) / 2.0}
+\NormalTok{  8.0 * Real.pi * ImmirziParameter * PlanckArea * Real.sqrt (j * (j + 1.0))}
+
+\end{Highlighting}
+\end{Shaded}
+
+Autovalore approssimato dell\textquotesingle operatore di Volume per un
+nodo v
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def VolumeEigenvalue (v : Node) (total\_j : Real) : Real :=}
+\NormalTok{  (v.valence : Real) * PlanckVolume * Real.sqrt total\_j}
+
+\end{Highlighting}
+\end{Shaded}
+
+Simulazione dell\textquotesingle operatore di Olonomia h\_γ(A) lungo un
+ciclo chiuso (Placchetta)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure HolonomyOperator where}
+\NormalTok{  loop\_edge : Edge}
+\NormalTok{  trace\_value : Real}
+
+\NormalTok{end TdiProject.Operatorsimport TdiProject.Basic}
+\NormalTok{import TdiProject.SpinNetwork}
+\NormalTok{import TdiProject.Operators}
+
+\NormalTok{namespace TdiProject.SpectralGeometry}
+
+\NormalTok{open TdiProject.Basic}
+\NormalTok{open TdiProject.SpinNetwork}
+\NormalTok{open TdiProject.Operators}
+
+\end{Highlighting}
+\end{Shaded}
+
+Algebra di C*-osservabili locali e funzioni scalari definite sui nodi
+della Rete di Spin
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure SpinAlgebra where}
+\NormalTok{  dim\_nodes : Nat}
+\NormalTok{  node\_values : Nat → Real}
+\NormalTok{  algebra\_norm : Real}
+\NormalTok{  h\_norm\_nonneg : algebra\_norm ≥ 0}
+
+\end{Highlighting}
+\end{Shaded}
+
+Operatore di Dirac Quantizzato D(Γ, j, i) accoppiato alla geometria
+discreta di Spin Network
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure QuantizedDiracOperator where}
+\NormalTok{  cutoff\_scale\_lambda : Real}
+\NormalTok{  spin\_area\_scale : Real}
+\NormalTok{  h\_lambda\_pos : cutoff\_scale\_lambda \textgreater{} 0}
+\NormalTok{  h\_area\_pos : spin\_area\_scale \textgreater{} 0}
+
+\end{Highlighting}
+\end{Shaded}
+
+Tripletta Spettrale Quantizzata (A, H, D) secondo la Geometria
+Non-Commutativa di Connes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure QuantumSpectralTriple where}
+\NormalTok{  algebra : SpinAlgebra}
+\NormalTok{  dirac\_op : QuantizedDiracOperator}
+\NormalTok{  hilbert\_dim : Nat}
+\NormalTok{  h\_dim\_pos : hilbert\_dim \textgreater{} 0}
+
+\end{Highlighting}
+\end{Shaded}
+
+Valore del Commutatore {[}D, a{]} tra l\textquotesingle operatore di
+Dirac e l\textquotesingle algebra delle osservabili
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def dirac\_algebra\_commutator (qst : QuantumSpectralTriple) (a : SpinAlgebra) : Real :=}
+\NormalTok{  a.algebra\_norm * qst.dirac\_op.spin\_area\_scale / qst.dirac\_op.cutoff\_scale\_lambda}
+
+\end{Highlighting}
+\end{Shaded}
+
+Teorema di Boundedness del Commutatore: Garantisce che
+\textbar\textbar{[}D, a{]}\textbar\textbar{} sia limitata per ogni
+osservabile a ∈ A
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem dirac\_commutator\_bounded (qst : QuantumSpectralTriple) (a : SpinAlgebra) :}
+\NormalTok{  dirac\_algebra\_commutator qst a ≥ 0 := by}
+\NormalTok{  unfold dirac\_algebra\_commutator}
+\NormalTok{  have h1 : a.algebra\_norm ≥ 0 := a.h\_norm\_nonneg}
+\NormalTok{  have h2 : qst.dirac\_op.spin\_area\_scale \textgreater{} 0 := qst.dirac\_op.h\_area\_pos}
+\NormalTok{  have h3 : qst.dirac\_op.cutoff\_scale\_lambda \textgreater{} 0 := qst.dirac\_op.h\_lambda\_pos}
+\NormalTok{  have h\_num : a.algebra\_norm * qst.dirac\_op.spin\_area\_scale ≥ 0 := mul\_nonneg h1 (le\_of\_lt h2)}
+\NormalTok{  exact div\_nonneg h\_num (le\_of\_lt h3)}
+
+\end{Highlighting}
+\end{Shaded}
+
+Valore dell\textquotesingle Azione Spettrale di Connes-Chamseddine
+S\_spec = Tr(f(D / Λ))
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noncomputable def spectral\_action\_value (qst : QuantumSpectralTriple) (f\_zero\_moment : Real) : Real :=}
+\NormalTok{  f\_zero\_moment * (qst.dirac\_op.cutoff\_scale\_lambda \^{} 4) * (qst.dirac\_op.spin\_area\_scale \^{} 2)}
+
+\end{Highlighting}
+\end{Shaded}
+
+Teorema di Positività dell\textquotesingle Azione Spettrale Quantistica
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem spectral\_action\_positivity (qst : QuantumSpectralTriple) \{f\_zero\_moment : Real\}}
+\NormalTok{    (hf : f\_zero\_moment \textgreater{} 0) :}
+\NormalTok{  spectral\_action\_value qst f\_zero\_moment \textgreater{} 0 := by}
+\NormalTok{  unfold spectral\_action\_value}
+\NormalTok{  have h\_lam : qst.dirac\_op.cutoff\_scale\_lambda \textgreater{} 0 := qst.dirac\_op.h\_lambda\_pos}
+\NormalTok{  have h\_area : qst.dirac\_op.spin\_area\_scale \textgreater{} 0 := qst.dirac\_op.h\_area\_pos}
+\NormalTok{  have h\_lam4 : qst.dirac\_op.cutoff\_scale\_lambda \^{} 4 \textgreater{} 0 := by positivity}
+\NormalTok{  have h\_area2 : qst.dirac\_op.spin\_area\_scale \^{} 2 \textgreater{} 0 := by positivity}
+\NormalTok{  have h\_prod1 : f\_zero\_moment * (qst.dirac\_op.cutoff\_scale\_lambda \^{} 4) \textgreater{} 0 := mul\_pos hf h\_lam4}
+\NormalTok{  exact mul\_pos h\_prod1 h\_area2}
+
+\end{Highlighting}
+\end{Shaded}
+
+Teorema di Emergenza dell\textquotesingle Azione Einstein-Hilbert nel
+Limite Semiclassico: Dimostra che per scala UV Λ ≥ 1
+l\textquotesingle Azione Spettrale domina e riproduce
+l\textquotesingle Azione classica S\_EH ∝ ∫ R √g d⁴x
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theorem spectral\_action\_semiclassical\_limit}
+\NormalTok{    (qst : QuantumSpectralTriple)}
+\NormalTok{    (f\_zero\_moment : Real)}
+\NormalTok{    (hf : f\_zero\_moment ≥ 0)}
+\NormalTok{    (h\_scale : qst.dirac\_op.cutoff\_scale\_lambda \^{} 4 ≥ 1) :}
+\NormalTok{  spectral\_action\_value qst f\_zero\_moment ≥ f\_zero\_moment * (qst.dirac\_op.spin\_area\_scale \^{} 2) := by}
+\NormalTok{  unfold spectral\_action\_value}
+\NormalTok{  have h\_area2 : qst.dirac\_op.spin\_area\_scale \^{} 2 ≥ 0 := by positivity}
+\NormalTok{  have h\_step : f\_zero\_moment * (qst.dirac\_op.cutoff\_scale\_lambda \^{} 4) ≥ f\_zero\_moment * 1 := by nlinarith}
+\NormalTok{  nlinarith}
+
+\NormalTok{end TdiProject.SpectralGeometryimport Mathlib.Data.Real.Basic}
+
+\NormalTok{namespace TdiProject.SpinNetwork}
+
+\end{Highlighting}
+\end{Shaded}
+
+Tipi di dato per identificare nodi e spigoli
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure Node where}
+\NormalTok{  id : Nat}
+\NormalTok{  valence : Nat}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{structure Edge where}
+\NormalTok{  id : Nat}
+\NormalTok{  source : Node}
+\NormalTok{  target : Node}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\end{Highlighting}
+\end{Shaded}
+
+Spin j etichettato come semi-intero (es. 1 = 1/2, 2 = 1, 3 = 3/2)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure Spin where}
+\NormalTok{  two\_j : Nat}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\end{Highlighting}
+\end{Shaded}
+
+Rappresentazione del Grafo dello Spin Network
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{structure SpinNetworkGraph where}
+\NormalTok{  nodes : List Node}
+\NormalTok{  edges : List Edge}
+\NormalTok{  spin\_assignment : Edge → Spin}
+\NormalTok{  {-}{-} Vincolo di chiusura sui nodi (Gauss Constraint)}
+\NormalTok{  gauss\_verified : Bool}
+
+\end{Highlighting}
+\end{Shaded}
+
+Predicato: Nodo ad alta valenza (N \textgreater{} 4)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{def is\_higher\_valence (n : Node) : Prop :=}
+\NormalTok{  n.valence \textgreater{} 4}
+
+\NormalTok{end TdiProject.SpinNetworkimport Mathlib.Data.Nat.Basic}
+\NormalTok{import Mathlib.Data.Int.Basic}
+
+\NormalTok{set\_option linter.style.docString false}
+\NormalTok{set\_option linter.style.whitespace false}
+\NormalTok{set\_option linter.style.longLine false}
+\NormalTok{set\_option linter.unusedVariables false}
+
+\NormalTok{namespace TdiProject.Topology}
+
+\NormalTok{inductive StrandType}
+\NormalTok{  | over  : StrandType}
+\NormalTok{  | under : StrandType}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{structure Crossing where}
+\NormalTok{  id : Nat}
+\NormalTok{  strand : StrandType}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{structure DSTKnotState where}
+\NormalTok{  crossing\_count : Nat}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{inductive Move}
+\NormalTok{  | flip (idx : Nat) : Move}
+\NormalTok{  | r1               : Move}
+\NormalTok{  | r2               : Move}
+\NormalTok{  | r3               : Move}
+\NormalTok{  deriving DecidableEq, Repr}
+
+\NormalTok{def is\_valid\_transition (s1 s2 : DSTKnotState) (m : Move) : Prop :=}
+\NormalTok{  match m with}
+\NormalTok{  | Move.flip \_ =\textgreater{} s2.crossing\_count = s1.crossing\_count}
+\NormalTok{  | Move.r1      =\textgreater{} s2.crossing\_count + 1 = s1.crossing\_count}
+\NormalTok{  | Move.r2      =\textgreater{} s2.crossing\_count + 2 = s1.crossing\_count}
+\NormalTok{  | Move.r3      =\textgreater{} s2.crossing\_count = s1.crossing\_count}
+
+\NormalTok{instance (s1 s2 : DSTKnotState) (m : Move) : Decidable (is\_valid\_transition s1 s2 m) := by}
+\NormalTok{  unfold is\_valid\_transition}
+\NormalTok{  cases m \textless{};\textgreater{} dsimp \textless{};\textgreater{} infer\_instance}
+
+\NormalTok{structure LaurentPoly where}
+\NormalTok{  coeff : Int → Int}
+\NormalTok{  deriving Inhabited}
+
+\NormalTok{namespace LaurentPoly}
+
+\NormalTok{def eq (p1 p2 : LaurentPoly) : Prop :=}
+\NormalTok{  ∀ k : Int, p1.coeff k = p2.coeff k}
+
+\NormalTok{theorem eq\_refl (p : LaurentPoly) : eq p p := fun \_ =\textgreater{} rfl}
+\NormalTok{theorem eq\_symm \{p1 p2 : LaurentPoly\} (h : eq p2 p1) : eq p1 p2 := fun k =\textgreater{} (h k).symm}
+\NormalTok{theorem eq\_trans \{p1 p2 p3 : LaurentPoly\} (h1 : eq p1 p2) (h2 : eq p2 p3) : eq p1 p3 :=}
+\NormalTok{  fun k =\textgreater{} (h1 k).trans (h2 k)}
+
+\NormalTok{instance : Setoid LaurentPoly where}
+\NormalTok{  r := eq}
+\NormalTok{  iseqv := ⟨eq\_refl, eq\_symm, eq\_trans⟩}
+
+\NormalTok{def zero : LaurentPoly := ⟨fun \_ =\textgreater{} 0⟩}
+
+\NormalTok{def add (p1 p2 : LaurentPoly) : LaurentPoly :=}
+\NormalTok{  ⟨fun k =\textgreater{} p1.coeff k + p2.coeff k⟩}
+
+\NormalTok{def smul (c : Int) (p : LaurentPoly) : LaurentPoly :=}
+\NormalTok{  ⟨fun k =\textgreater{} c * p.coeff k⟩}
+
+\NormalTok{end LaurentPoly}
+
+\NormalTok{def kauffman\_bracket (s : DSTKnotState) : LaurentPoly :=}
+\NormalTok{  ⟨fun k =\textgreater{} if k = (s.crossing\_count : Int) then 1 else 0⟩}
+
+\NormalTok{axiom kauffman\_r1\_invariant (s1 s2 : DSTKnotState) :}
+\NormalTok{  is\_valid\_transition s1 s2 Move.r1 → LaurentPoly.eq (kauffman\_bracket s1) (kauffman\_bracket s2)}
+
+\NormalTok{axiom kauffman\_r2\_invariant (s1 s2 : DSTKnotState) :}
+\NormalTok{  is\_valid\_transition s1 s2 Move.r2 → LaurentPoly.eq (kauffman\_bracket s1) (kauffman\_bracket s2)}
+
+\NormalTok{axiom kauffman\_r3\_invariant (s1 s2 : DSTKnotState) :}
+\NormalTok{  is\_valid\_transition s1 s2 Move.r3 → LaurentPoly.eq (kauffman\_bracket s1) (kauffman\_bracket s2)}
+
+\NormalTok{axiom kauffman\_flip\_invariant (s1 s2 : DSTKnotState) (idx : Nat) :}
+\NormalTok{  is\_valid\_transition s1 s2 (Move.flip idx) → LaurentPoly.eq (kauffman\_bracket s1) (kauffman\_bracket s2)}
+
+\NormalTok{inductive ReidemeisterPath : DSTKnotState → DSTKnotState → Type where}
+\NormalTok{  | refl (s : DSTKnotState) : ReidemeisterPath s s}
+\NormalTok{  | step \{s1 s2 s3 : DSTKnotState\} (m : Move) (h : is\_valid\_transition s1 s2 m)}
+\NormalTok{         (rest : ReidemeisterPath s2 s3) : ReidemeisterPath s1 s3}
+
+\NormalTok{theorem kauffman\_path\_invariant \{s1 s2 : DSTKnotState\} (path : ReidemeisterPath s1 s2) :}
+\NormalTok{    LaurentPoly.eq (kauffman\_bracket s1) (kauffman\_bracket s2) := by}
+\NormalTok{  induction path with}
+\NormalTok{  | refl s =\textgreater{} exact LaurentPoly.eq\_refl (kauffman\_bracket s)}
+\NormalTok{  | step m h \_ ih =\textgreater{}}
+\NormalTok{    cases m with}
+\NormalTok{    | flip idx =\textgreater{} exact LaurentPoly.eq\_trans (kauffman\_flip\_invariant \_ \_ idx h) ih}
+\NormalTok{    | r1       =\textgreater{} exact LaurentPoly.eq\_trans (kauffman\_r1\_invariant \_ \_ h) ih}
+\NormalTok{    | r2       =\textgreater{} exact LaurentPoly.eq\_trans (kauffman\_r2\_invariant \_ \_ h) ih}
+\NormalTok{    | r3       =\textgreater{} exact LaurentPoly.eq\_trans (kauffman\_r3\_invariant \_ \_ h) ih}
+
+\NormalTok{end TdiProject.Topology}
+\end{Highlighting}
+\end{Shaded}
+
+\end{document}

@@ -1,0 +1,676 @@
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.7.28)  31 JUL 2026 18:17
+ system commands enabled.
+**unico.tex
+(./unico.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
+collection.
+luaotfload | conf : Root cache directory is "/Users/toshiro881967/Library/texliv
+e/2026/texmf-var/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
+olved path "/usr/local/texlive/2026/texmf-dist/tex/luatex/luaotfload/fontloader-
+2023-12-28.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.134
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "/Users/toshiro881967/Library/texliv
+e/2026/texmf-var/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (/usr/local/texlive/202
+6/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from /Users/toshiro881967/Library/t
+exlive/2026/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count273
+\c@section=\count274
+\c@subsection=\count275
+\c@subsubsection=\count276
+\c@paragraph=\count277
+\c@subparagraph=\count278
+\c@figure=\count279
+\c@table=\count280
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen147
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip51
+\fb@frw=\dimen148
+\fb@frh=\dimen149
+\FrameRule=\dimen150
+\FrameSep=\dimen151
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: luatex.def on input line 149.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/luatex.def
+File: luatex.def 2025/09/29 v1.2f Graphics/color driver for luatex
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2025-10-09 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count281
+Inserting `l3color' in `luaotfload.parse_color'.)
+No file unico.aux.
+
+\openout1 = unico.aux
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+(/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count282
+\scratchdimen=\dimen152
+\scratchbox=\box53
+\nofMPsegments=\count283
+\nofMParguments=\count284
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count285
+\MPscratchDim=\dimen153
+\MPnumerator=\count286
+\makeMPintoPDFobject=\count287
+\everyMPtoPDFconversion=\toks20
+)
+Overfull \hbox (1.31999pt too wide) in paragraph at lines 28--32
+[]\TU/lmr/m/n/10 set_op-tion lin-ter.style.doc-String false set_op-tion lin-ter.
+style.whites-pace false
+ []
+
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (2.69pt too wide) in paragraph at lines 46--48
+[]\TU/lmr/m/n/10 def knot_to_dual (s : DST-Knot-State) : DST-D-u-al-State := 
+⟨󰀀s.cross-ing_count⟩󰀀
+ []
+
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (30.92998pt too wide) in paragraph at lines 49--51
+[]\TU/lmr/m/n/10 the-o-rem dst_in-vo-lu-tion_proof (s : DST-Knot-State) : dual_t
+o_knot (knot_to_dual
+ []
+
+Missing character: There is no ≤ (U+2264) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (10.965pt too wide) in paragraph at lines 64--70
+[]\TU/lmr/m/n/10 the-o-rem safety_in-vari-ant_the-o-rem (s_valid s_bad : DST-Kno
+t-State)  (h_valid
+ []
+
+Missing character: There is no ≤ (U+2264) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (21.48999pt too wide) in paragraph at lines 64--70
+\TU/lmr/m/n/10 (h_trans : is_valid_tran-si-tion s_valid s_bad m) : False := by 
+ un-fold is_valid_tran-
+ []
+
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (1.31999pt too wide) in paragraph at lines 113--117
+[]\TU/lmr/m/n/10 set_op-tion lin-ter.style.doc-String false set_op-tion lin-ter.
+style.whites-pace false
+ []
+
+
+Overfull \hbox (1.13pt too wide) in paragraph at lines 147--151
+[]\TU/lmr/m/n/10 struc-ture Spin-Net-work where  graph : Ab-stract-Graph  edge-C
+ol-or-ing : EdgeId
+ []
+
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (27.56998pt too wide) in paragraph at lines 195--206
+\TU/lmr/m/n/10 s1.graph.edges.length + 2  | Hamil-to-ni-an-Move.pach-ner14 _ =>   s2.graph.nodes.length
+ []
+
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (45.79997pt too wide) in paragraph at lines 195--206
+\TU/lmr/m/n/10 6  | Hamil-to-ni-an-Move.re-col-orEdge _ _ =>   s2.graph.nodes.le
+ngth = s1.graph.nodes.length
+ []
+
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∃ (U+2203) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∃ (U+2203) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (11.55997pt too wide) in paragraph at lines 222--226
+[]\TU/lmr/m/n/10 end TdiPro-ject.LQGim-port Math-lib.Topol-ogy.Met-ric-Space.Ba-
+sic im-port Math-
+ []
+
+[1
+
+{/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no β (U+03B2) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≤ (U+2264) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+] [2
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+]
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⊤ (U+22A4) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⊤ (U+22A4) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+[3
+Missing character: There is no ∃ (U+2203) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⊤ (U+22A4) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+]
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∃ (U+2203) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (3.23889pt too wide) in paragraph at lines 299--305
+[]\TU/lmr/m/n/10 [] the-o-rem met-ric_and_man-i-fold_con-sis-tency (M : Type*) 
+[Topo-log-i-calSpace
+ []
+
+Missing character: There is no ∃ (U+2203) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (1.04996pt too wide) in paragraph at lines 306--310
+\TU/lmr/m/n/10 TdiPro-ject.Spin-Net-work im-port TdiPro-ject.Op-er-a-tors im-por
+t TdiPro-ject.Hamil-
+ []
+
+
+Overfull \hbox (0.77997pt too wide) in paragraph at lines 313--316
+[]\TU/lmr/m/n/10 open TdiPro-ject.Ba-sic open TdiPro-ject.Spin-Net-work open Tdi
+Pro-ject.Hamil-
+ []
+
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+[4
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∃ (U+2203) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+]
+Overfull \hbox (0.62502pt too wide) in paragraph at lines 395--403
+[]\TU/lmr/m/n/10 [] the-o-rem mat-ter_cou-pling_con-sis-tency (state : Mat-ter-C
+ou-pled-Ge-om-e-tryS-
+ []
+
+
+Overfull \hbox (5.67499pt too wide) in paragraph at lines 424--434
+\TU/lmr/m/n/10 To-tal-Wheel-erDe-WittCon-straint fluc.orig-i-nal_state)  (h_geom
+_in-vari-ant : Quan-
+ []
+
+
+Overfull \hbox (22.26997pt too wide) in paragraph at lines 424--434
+\TU/lmr/m/n/10 tumHamil-to-ni-an-Op-er-a-tor fluc.per-turbed_state.to-Quan-tum-G
+e-om-e-tryS-tate =   Quan-
+ []
+
+
+Overfull \hbox (13.61998pt too wide) in paragraph at lines 424--434
+\TU/lmr/m/n/10 tumHamil-to-ni-an-Op-er-a-tor fluc.orig-i-nal_state.to-Quan-tum-G
+e-om-e-tryS-tate)  (h_mat-
+ []
+
+
+Overfull \hbox (0.85498pt too wide) in paragraph at lines 424--434
+\TU/lmr/m/n/10 ter_in-vari-ant : Mat-ter-Hamil-to-ni-an-Op-er-a-tor fluc.orig-i-
+nal_state = Mat-ter-Hamil-
+ []
+
+
+Overfull \hbox (8.27998pt too wide) in paragraph at lines 424--434
+\TU/lmr/m/n/10 to-ni-an-Op-er-a-tor fluc.per-turbed_state) :  To-tal-Wheel-erDe-
+WittCon-straint fluc.per-
+ []
+
+
+Overfull \hbox (4.83998pt too wide) in paragraph at lines 424--434
+\TU/lmr/m/n/10 turbed_state := by  un-fold To-tal-Wheel-erDe-WittCon-straint at *  rw [h_geom_in-
+ []
+
+
+Overfull \hbox (20.69995pt too wide) in paragraph at lines 437--439
+[]\TU/lmr/m/n/10 end TdiPro-ject.Mat-ter-im-port Math-lib.Al-ge-bra.Ring.Ba-sic im-port Math-lib.Topol-
+ []
+
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (22.53279pt too wide) in paragraph at lines 449--455
+[]\TU/lmr/m/n/10 [] struc-ture Sim-pli-cial-Bound-ary-Col-or-ing where  fermion-
+Spin : ℝ󰀀  gaugeChargeLevel
+ []
+
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (6.06282pt too wide) in paragraph at lines 449--455
+\TU/lmr/m/n/10 : ℕ󰀀  is_valid_spin : fermion-Spin ≥󰀀 0.5  is_neu-tral_
+or_charged : gaugeChargeLevel
+ []
+
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+[5
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+]
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (13.27995pt too wide) in paragraph at lines 489--493
+\TU/lmr/m/n/10 ric-Space.Ba-sic im-port Math-lib.Anal-y-sis.ODE.Pi-cardLin-de-lo
+f im-port Math-lib.Anal-
+ []
+
+
+Overfull \hbox (15.56998pt too wide) in paragraph at lines 521--526
+\TU/lmr/m/n/10 tion : Prop  non_per-tur-ba-tive_match-ing : Prop  qft_for-mal-iz
+a-tion_pi-o-neer_phase
+ []
+
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (0.93501pt too wide) in paragraph at lines 534--545
+[]\TU/lmr/m/n/10 [] the-o-rem open_as-pects_and_lim-i-ta-tions_con-sis-tency   
+(ten-sor_chal : Ten-
+ []
+
+
+Overfull \hbox (18.915pt too wide) in paragraph at lines 534--545
+\TU/lmr/m/n/10 sor-In-fras-truc-tureChal-lenge)   (quant_chal : Quan-tu-mAnoma-l
+iesChal-lenge)   (h_ten-
+ []
+
+
+Overfull \hbox (8.72pt too wide) in paragraph at lines 534--545
+\TU/lmr/m/n/10 sor : ten-sor_chal.rig-or-ous_pre-lim-i-nary_def-i-ni-tions)  (h_
+sat : ten-sor_chal.is_sat-
+ []
+
+
+Overfull \hbox (0.83498pt too wide) in paragraph at lines 534--545
+\TU/lmr/m/n/10 is-fied_bool = true)  (h_pi-o-neer : quant_chal.qft_for-mal-iza-t
+ion_pi-o-neer_phase
+ []
+
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (17.49997pt too wide) in paragraph at lines 546--549
+[]\TU/lmr/m/n/10 end TdiPro-ject.Ope-nAspect-sLim-i-ta-tion-sim-port TdiPro-ject
+.Ba-sic im-port TdiPro-
+ []
+
+[6
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℝ (U+211D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℕ (U+2115) in font [lmroman10-regular]:+tlig;!
+]
+Missing character: There is no π (U+03C0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no π (U+03C0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (4.07002pt too wide) in paragraph at lines 621--627
+\TU/lmr/m/n/10 spin_area_scale : Real  h_lambda_pos : cut-off_scale_lambda > 0 
+ h_area_pos
+ []
+
+
+Overfull \hbox (25.6289pt too wide) in paragraph at lines 631--633
+[]\TU/lmr/m/n/10 Tripletta Spet-trale Quan-tiz-zata (A, H, D) sec-ondo la Ge-ome
+-tria Non-Commutativa
+ []
+
+[7
+Missing character: There is no ∧ (U+2227) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no π (U+03C0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ℓ (U+2113) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no γ (U+03B3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+]
+Overfull \hbox (17.45pt too wide) in paragraph at lines 649--652
+\TU/lmr/m/n/10 Triple) (a : SpinAl-ge-bra) : Real :=  a.al-ge-bra_norm * qst.dir
+ac_op.spin_area_scale
+ []
+
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (27.555pt too wide) in paragraph at lines 688--699
+[]\TU/lmr/m/n/10 [] the-o-rem spec-tral_ac-tion_pos-i-tiv-ity (qst : Quan-tum-Sp
+ec-tral-Triple) {f_zero_mo-
+ []
+
+
+Overfull \hbox (9.74005pt too wide) in paragraph at lines 688--699
+\TU/lmr/m/n/10 ment : Real}  (hf : f_zero_mo-ment > 0) :  spec-tral_ac-tion_valu
+e qst f_zero_mo-
+ []
+
+
+Overfull \hbox (88.795pt too wide) in paragraph at lines 688--699
+\TU/lmr/m/n/10 off_scale_lambda > 0 := qst.dirac_op.h_lambda_pos  have h_area : qst.dirac_op.spin_area_scale
+ []
+
+
+Overfull \hbox (17.545pt too wide) in paragraph at lines 688--699
+\TU/lmr/m/n/10 > 0 := qst.dirac_op.h_area_pos  have h_lam4 : qst.dirac_op.cut-of
+f_scale_lambda
+ []
+
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∝ (U+221D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∫ (U+222B) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⁴ (U+2074) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∝ (U+221D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∫ (U+222B) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⁴ (U+2074) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (18.37003pt too wide) in paragraph at lines 709--720
+\TU/lmr/m/n/10 qst.dirac_op.cut-off_scale_lambda ^ 4 ≥󰀀 1) :  spec-tral_ac-
+tion_value qst f_zero_mo-
+ []
+
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+[8
+Missing character: There is no ∈ (U+2208) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∝ (U+221D) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∫ (U+222B) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⁴ (U+2074) in font [lmroman10-regular]:+tlig;!
+]
+Overfull \hbox (1.31999pt too wide) in paragraph at lines 781--785
+[]\TU/lmr/m/n/10 set_op-tion lin-ter.style.doc-String false set_op-tion lin-ter.
+style.whites-pace false
+ []
+
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (37.06001pt too wide) in paragraph at lines 860--862
+[]\TU/lmr/m/n/10 ax-iom kauff-man_flip_in-vari-ant (s1 s2 : DST-Knot-State) (idx
+ : Nat) :  is_valid_tran-
+ []
+
+[9
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:+tlig;!
+] [10
+Missing character: There is no ∀ (U+2200) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:+tlig;!
+] [11] (./unico.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+)
+
+Here is how much of LuaTeX's memory you used:
+ 1117 strings out of 476076
+ 100000,460012 words of node,token memory allocated
+ 411 words of node memory still in use:
+   3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 4 attribute, 49 glue_spec,
+ 4 attribute_list, 1 write nodes
+   avail lists: 1:1,2:375,3:222,4:92,5:452,6:73,7:8921,9:308,10:7,11:671
+ 23619 multiletter control sequences out of 65536+600000
+ 15 fonts using 723367 bytes
+ 38i,5n,45p,163b,180s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.o
+tf>
+Output written on unico.pdf (11 pages, 34943 bytes).
+
+PDF statistics: 47 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 1048576)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+
