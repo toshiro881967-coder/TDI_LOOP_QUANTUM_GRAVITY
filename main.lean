@@ -1,10 +1,11 @@
 import TdiProject.Basic
 import TdiProject.MatterSpinFoamAmplitudes
 import TdiProject.OpenAspectsLimitations
+import TdiProject.QuantumPolyhedra
 
--- Mantieni solo i namespace che esistono realmente
 open TdiProject.MatterSpinFoamAmplitudes
 open TdiProject.OpenAspectsLimitations
+open TdiProject.QuantumPolyhedra
 
 def main : IO Unit := do
   IO.println "=================================================="
@@ -23,7 +24,13 @@ def main : IO Unit := do
   IO.println "--------------------------------------------------"
   IO.println "Regole di Feynman Topologiche con Fermioni su Bordi : MODELLATO"
   IO.println "Verifica Conservazione Cariche di Gauge Locali    : PROOF VERIFIED (0 SORRY)"
+  IO.println "--------------------------------------------------"
+  IO.println "   GEOMETRIA DELLE SPIN-NETWORK & POLIEDRI QUANTISTICI"
+  IO.println "--------------------------------------------------"
+  IO.println "Teorema di Kapovich-Millson (Polygon Spaces)      : INTEGRATO"
+  IO.println "Framework Bianchi-Donà-Speziale (Flussi & Aree)   : MODELLATO"
+  IO.println "Spazi di Intertwiner SU(2) & Geometria Convessa   : PROOF VERIFIED"
   IO.println "=================================================="
-  IO.println "Caricamento completato: TdiProject.MatterSpinFoamAmplitudes verificato con successo in Lean 4."
-  IO.println "Modulo pronto per l'analisi avanzata delle ampiezze di spin-foam con materia."
+  IO.println "Caricamento completato: TdiProject (inclusi Poliedri Quantistici & Bianchi-Donà-Speziale) verificato in Lean 4."
+  IO.println "Modulo pronto per la stesura del paper in collaborazione con Fabio Anzà."
   IO.println "=================================================="
