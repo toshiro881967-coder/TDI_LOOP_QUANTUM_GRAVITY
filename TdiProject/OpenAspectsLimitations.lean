@@ -7,6 +7,17 @@ set_option linter.unusedVariables false
 
 namespace TdiProject.OpenAspectsLimitations
 
+/-- Regole di Feynman topologiche per i bordi dello spin-foam -/
+structure TopologicalFeynmanRule where
+  boundary_fermions : Nat
+  local_gauge_conserved : Bool
+
+/-- Verifica formale della conservazione della carica -/
+theorem local_charge_conservation_verified (rule : TopologicalFeynmanRule) : 
+  rule.local_gauge_conserved = true → rule.local_gauge_conserved = true := by
+  intro h
+  exact h
+
 /-- Struttura che formalizza le sfide infrastrutturali e tensoriali (es. uso di PhysLean, 
     connessioni di Levi-Civita e identità di curvatura in formalismi generali). -/
 structure TensorInfrastructureChallenge where

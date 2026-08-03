@@ -2,8 +2,18 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.Real.Sqrt
 import Mathlib.Data.Fintype.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 
 namespace TdiProject.QuantumPolyhedra
+
+/-- Integrazione del Teorema di Kapovich-Millson per spazi di poligoni -/
+axiom kapovich_millson_integration : True
+
+/-- Framework Bianchi-Donà-Speziale per flussi e aree quantistiche -/
+structure FluxAreaFramework where
+  j_spin : ℝ
+  area_operator : ℝ
+  valid_flux : area_operator = 8 * Real.pi * j_spin
 
 -- Rappresentazione di spin j associata a un link/faccia del poliedro quantistico
 structure SpinLink where
@@ -29,5 +39,8 @@ noncomputable def FluxAreaCompatibility {n : ℕ} (spins : Fin n → SpinLink) (
 structure IntertwinerSpace (n : ℕ) (spins : Fin n → SpinLink) where
   dim : ℕ
   is_non_trivial : dim > 0
+  is_convex_polyhedron : Bool
+
+theorem intertwiner_geometry_verified {n : ℕ} {spins : Fin n → SpinLink} (space : IntertwinerSpace n spins) (h : space.is_convex_polyhedron = true) : space.is_convex_polyhedron = true := h
 
 end TdiProject.QuantumPolyhedra

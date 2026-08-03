@@ -1,0 +1,25 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "uniLQC.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/data_unimdular_lqc/__pycache__/dynamics_lnv.cpython-310.pyc"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/data_unimdular_lqc/dynamics_lnv.py"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "anc/data_unimdular_lqc/integrations_and_plots.ipynb"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2025",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}
